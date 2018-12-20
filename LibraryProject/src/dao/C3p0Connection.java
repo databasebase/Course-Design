@@ -1,57 +1,55 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
-public class C3p0Connection implements ConnectRelease {
-	private static ComboPooledDataSource dSource = null;
+public abstract class C3p0Connection implements ConnectRelease{
+	private static ComboPooledDataSource ds = null;
 	static {
 		try {
-			dSource = new ComboPooledDataSource();
-		} catch (Exception e) {
+			ds = new ComboPooledDataSource("");
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-
-	public Connection getConnection() {
+	public  Connection getConnection() {
 		try {
-			return dSource.getConnection();
+			return ds.getConnection();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
 		}
-
+		return null;
 	}
-
-	public void release(Connection connection, PreparedStatement statement, ResultSet resultSet) {
-		if (resultSet != null) {
+	public static void release(Connection conn,Statement st, ResultSet rs) {
+		if(rs!=null) {
 			try {
-				resultSet.close();
-			} catch (Exception e) {
+				rs.close();
+			}catch(Exception e) {
 				e.printStackTrace();
 			}
-			resultSet = null;
+			rs = null;
 		}
-		if (statement != null) {
+		if(st!=null) {
 			try {
-				statement.close();
-			} catch (Exception e) {
+				st.close();
+			}
+			catch(Exception e) {
 				e.printStackTrace();
 			}
-			statement = null;
+			st = null;
 		}
-		if (connection != null) {
+		if(conn!=null) {
 			try {
-				connection.close();
-			} catch (Exception e) {
+				conn.close();
+			}catch(Exception e) {
 				e.printStackTrace();
 			}
-			connection = null;
+			conn = null;
 		}
 	}
-
 }
