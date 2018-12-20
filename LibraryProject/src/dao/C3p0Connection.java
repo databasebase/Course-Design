@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
-public abstract class C3p0Connection implements ConnectRelease{
+public abstract class C3p0Connection {
 	private static ComboPooledDataSource ds = null;
 	static {
 		try {
@@ -16,7 +16,7 @@ public abstract class C3p0Connection implements ConnectRelease{
 			e.printStackTrace();
 		}
 	}
-	public  Connection getConnection() {
+	public static Connection getConnection() {
 		try {
 			return ds.getConnection();
 		} catch (SQLException e) {

@@ -13,8 +13,7 @@ public class Main {
 		try {
 			//Connection conn = JdbcUtil.getConnection();
 			//Connection conn = DbcpJdbcUtil.getConnection();
-			C3p0Connection cc = new C3p0Connection();
-			Connection conn = cc.getConnection();
+			Connection conn = C3p0Connection.getConnection();
 			Statement stmt = conn.createStatement();
 			System.out.println("SUCCESS");
 		}catch(SQLException e) {
