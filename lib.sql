@@ -91,10 +91,8 @@ CREATE TABLE `book` (
   `book_borrow_times` int(11) NOT NULL,
   `book_price` double DEFAULT NULL,
   `book_sort` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `manager_email` varchar(20) NOT NULL,
-  `manager_cardid` varchar(20) NOT NULL,
-  `manager_code` varchar(20) NOT NULL,
   `book_aut` varchar(20) NOT NULL,
+  `book_state` int(11) NOT NULL,
   PRIMARY KEY (`book_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -240,6 +238,11 @@ CREATE TABLE `manager` (
   `manager_name` varchar(20) NOT NULL,
   `manager_age` int(11) NOT NULL,
   `manager_phone` varchar(20) NOT NULL,
+  `manager_email` varchar(20) NOT NULL,
+  `manager_cardid` varchar(20) NOT NULL,
+  `manager_code` varchar(20) NOT NULL,
+  `manager_username` varchar(20) NOT NULL,
+  `manager_passwd` varchar(20) NOT NULL,
   PRIMARY KEY (`manager_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -391,4 +394,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-20 14:45:31
+-- Dump completed on 2018-12-20 16:14:07
