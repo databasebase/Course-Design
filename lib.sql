@@ -26,7 +26,7 @@ CREATE TABLE `app_student` (
   `app_student_id` int(11) NOT NULL AUTO_INCREMENT,
   `stu_id` int(11) NOT NULL,
   `book_id` int(11) NOT NULL,
-  `app_data` date NOT NULL,
+  `app_date` date DEFAULT NULL,
   PRIMARY KEY (`app_student_id`),
   KEY `FK_app_stu_id` (`stu_id`),
   KEY `FK_app_book_id` (`book_id`),
@@ -394,4 +394,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-20 16:14:07
+-- Dump completed on 2018-12-20 19:44:54
