@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
-public abstract class C3p0Connection {
+public  class C3p0Connection {
 	private static ComboPooledDataSource ds = null;
 	static {
 		try {
