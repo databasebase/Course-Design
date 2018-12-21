@@ -1,0 +1,23 @@
+<c3p0-config>
+
+    <default-config>
+        <property name = "driverClass">com.mysql.cj.jdbc.Driver</property>
+        <property name = "jdbcUrl">jdbc:mysql://localhost:3306/experiment</property>
+        <property name = "user">root</property>
+        <property name ="password">@Master3653</property>
+        <property name="acquireIncrement">5</property>
+        <property name="initialPoolSize">10</property>
+        <property name="maxPoolSize">20</property>
+    </default-config>
+    
+    
+    <name-config name="mysql">
+        <property name = "driverClass">com.mysql.cj.jdbc.Driver</property>
+        <property name = "jdbcUrl">jdbc:mysql://localhost:3306/experiment?useSSL=false&amp;serverTimezone=GMT%2B8;</property>
+        <property name = "user">root</property>
+        <property name ="password">@Master3653</property>
+        <property name="acquireIncrement">5</property>
+        <property name="initialPoolSize">10</property>
+        <property name="maxPoolSize">20</property>
+    </name-config>
+</c3p0-config>
