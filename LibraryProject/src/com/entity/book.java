@@ -6,7 +6,7 @@ public class book {
 	private String book_intro;
 	private String book_addr;
 	private String book_ok;
-	private String book_health;
+	private int book_health;
 	private String book_record;
 	private int book_borrow_times;
 	private double book_price;
@@ -43,10 +43,10 @@ public class book {
 	public void setBook_ok(String book_ok) {
 		this.book_ok = book_ok;
 	}
-	public String getBook_health() {
+	public int getBook_health() {
 		return book_health;
 	}
-	public void setBook_health(String book_health) {
+	public void setBook_health(int book_health) {
 		this.book_health = book_health;
 	}
 	public String getBook_record() {
