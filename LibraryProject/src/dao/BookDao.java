@@ -17,7 +17,7 @@ public class BookDao  extends C3p0Connection{
 				Statement st = null;
 				cn = getConnection();
 				st = cn.createStatement();
-				String sql = "insert into book(book_name,book_aut,book_intro,book_addr,book_ok,book_health,book_record,book_borrow_times,book_price,book_sort,book_state) values('"+b.getBook_name()+"','"+b.getBook_aut()+"','"+b.getBook_intro()+"','"+b.getBook_addr()+"','"+b.getBook_ok()+"','"+b.getBook_health()+"','"+b.getBook_record()+"','"+b.getBook_borrow_times()+"','"+b.getBook_price()+"','"+b.getBook_sort()+"','"+b.getBook_state()+"')";
+				String sql = "insert into book(book_id,book_name,book_aut,book_intro,book_addr,book_ok,book_health,book_record,book_borrow_times,book_price,book_sort,book_state) values('"+b.getBook_id()+"','"+b.getBook_name()+"','"+b.getBook_aut()+"','"+b.getBook_intro()+"','"+b.getBook_addr()+"','"+b.getBook_ok()+"','"+b.getBook_health()+"','"+b.getBook_record()+"','"+b.getBook_borrow_times()+"','"+b.getBook_price()+"','"+b.getBook_sort()+"','"+b.getBook_state()+"')";
 				st.executeUpdate(sql);
 				//System.out.println("SUCCESS");
 			}catch(SQLException e)
@@ -81,13 +81,13 @@ public class BookDao  extends C3p0Connection{
 			BookDao bd = new BookDao();
 			book b = new book();
 			b.setBook_id(1);
-			b.setBook_name("A Brief History of Time ");
+			b.setBook_name(" ±º‰ºÚ ∑");
 			b.setBook_aut("Stephen Hawkins");
 			b.setBook_intro("GRAND BOOK");
 			b.setBook_addr("ROOM 101");
 			b.setBook_ok("Beijing Forestry University publishing house");
 			b.setBook_health(2);
-			b.setBook_record("2018-12-21");
+			b.setBook_record("2018/12/21");
 			b.setBook_borrow_times(3);
 			b.setBook_price(23.5);
 			b.setBook_sort("Science");

@@ -28,7 +28,5 @@ public class AppStudentDao extends C3p0Connection{
 			e.printStackTrace();
 		}
 	}
-	
-	//select all application from appStudent table 
 
 }
