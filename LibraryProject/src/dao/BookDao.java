@@ -18,7 +18,7 @@ public class BookDao  extends C3p0Connection{
 				cn = getConnection();
 				st = cn.createStatement();
 				String sql = "insert into book(book_id,book_name,book_aut,book_intro,book_addr,book_ok,book_health,book_record,book_borrow_times,book_price,book_sort,book_state) values('"+b.getBook_id()+"','"+b.getBook_name()+"','"+b.getBook_aut()+"','"+b.getBook_intro()+"','"+b.getBook_addr()+"','"+b.getBook_ok()+"','"+b.getBook_health()+"','"+b.getBook_record()+"','"+b.getBook_borrow_times()+"','"+b.getBook_price()+"','"+b.getBook_sort()+"','"+b.getBook_state()+"')";
-				boolean rs = st.execute(sql);
+				st.executeUpdate(sql);
 				System.out.println("SUCCESS");
 			}catch(SQLException e)
 			{
@@ -44,5 +44,62 @@ public class BookDao  extends C3p0Connection{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+		//删除指定id的书
+		public void delete(book b)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "delete from book where book_id ='"+b.getBook_id()+"'";
+				st.executeUpdate(sql);
+			}catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		//修改指定id的书
+		public void change(book b)
+		{
+			
+			try {
+				Connection cn =null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update book set book_name = '"+b.getBook_name()+"',book_aut = '"+b.getBook_aut()+"',book_intro = '"+b.getBook_intro()+"',book_addr = '"+b.getBook_addr()+"',book_ok = '"+b.getBook_ok()+"',book_health = '"+b.getBook_health()+"',book_record = '"+b.getBook_record()+"',book_borrow_times = '"+b.getBook_borrow_times()+"',book_price ='"+b.getBook_price()+"',book_sort = '"+b.getBook_sort()+"',book_state = '"+b.getBook_state()+"' where book_id = '"+b.getBook_id()+"'";
+				st.executeUpdate(sql);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		public void test()
+		{
+			BookDao bd = new BookDao();
+			book b = new book();
+			b.setBook_id(1);
+			b.setBook_name("时间简史");
+			b.setBook_aut("史蒂芬霍金");
+			b.setBook_intro("伟大的书籍");
+			b.setBook_addr("101室");
+			b.setBook_ok("北京林业大学出版社");
+			b.setBook_health(2);
+			b.setBook_record("2018/12/21");
+			b.setBook_borrow_times(3);
+			b.setBook_price(23.5);
+			b.setBook_sort("科学");
+			b.setBook_state(2 );
+			//bd.Insert(b);
+			bd.select();
+			book b1 = new book();
+			b1.setBook_id(8);
+			System.out.println(b1.getBook_id());
+			bd.delete(b1);
+			bd.select();
+			bd.change(b);
+			bd.select();
 		}
 }
