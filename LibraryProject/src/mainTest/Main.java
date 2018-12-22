@@ -10,7 +10,6 @@ import com.entity.book;
 import dao.AppStudentDao;
 import dao.AppTeacherDao;
 import dao.BookDao;
-import dao.BorrowStudentDao;
 import dao.BorrowTeacherDao;
 import dao.C3p0Connection;
 import dao.TeacherDao;
@@ -32,8 +31,10 @@ public class Main {
 			//td.test();
 			//AppTeacherDao atd = new AppTeacherDao();
 			//atd.test();
-			BorrowStudentDao btd = new BorrowStudentDao();
-			btd.test();
+//			BorrowTeacherDao btd = new BorrowTeacherDao();
+//			btd.test();
+			AppStudentDao asd = new AppStudentDao();
+			asd.test();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
