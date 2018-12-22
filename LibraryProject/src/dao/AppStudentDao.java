@@ -7,7 +7,7 @@ import java.sql.Statement;
 import com.entity.AppStudent;
 
 public class AppStudentDao extends C3p0Connection{
-	//学生提交申请
+	//insert a new application to the AppStudent table
 	public void Insert(int app_student_id,int stu_id,int book_id,String app_date)
 	{
 		try {

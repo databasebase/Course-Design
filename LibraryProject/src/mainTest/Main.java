@@ -10,6 +10,7 @@ import com.entity.book;
 import dao.AppStudentDao;
 import dao.BookDao;
 import dao.C3p0Connection;
+import dao.TeacherDao;
 
 public class Main {
 	public static void main(String[] args)
@@ -22,8 +23,10 @@ public class Main {
 			System.out.println("SUCCESS");
 			//AppStudentDao as = new AppStudentDao();
 			//as.Insert(101, 110, 123, "2018/12/20");
-			BookDao bd = new BookDao();
-			bd.test();
+//			BookDao bd = new BookDao();
+//			bd.test();
+			TeacherDao td = new TeacherDao();
+			td.test();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}

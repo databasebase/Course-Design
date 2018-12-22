@@ -9,7 +9,7 @@ import java.sql.Statement;
 import com.entity.book;
 
 public class BookDao  extends C3p0Connection{
-		//向书表中插入新书
+		//insert the new book to book table
 	public void Insert(book b)
 		{
 			try {
@@ -25,7 +25,7 @@ public class BookDao  extends C3p0Connection{
 				e.printStackTrace();
 			}
 		}
-		//查询书表中的书
+		//select all book from book table 
 		public void select()
 		{
 			
@@ -45,7 +45,7 @@ public class BookDao  extends C3p0Connection{
 				e.printStackTrace();
 			}
 		}
-		//删除指定id的书
+		//delete the book according the id
 		public void delete(book b)
 		{
 			try {
@@ -60,7 +60,7 @@ public class BookDao  extends C3p0Connection{
 				e.printStackTrace();
 			}
 		}
-		//修改指定id的书
+		//change the book according the id
 		public void change(book b)
 		{
 			
@@ -82,15 +82,15 @@ public class BookDao  extends C3p0Connection{
 			book b = new book();
 			b.setBook_id(1);
 			b.setBook_name("时间简史");
-			b.setBook_aut("史蒂芬霍金");
-			b.setBook_intro("伟大的书籍");
-			b.setBook_addr("101室");
-			b.setBook_ok("北京林业大学出版社");
+			b.setBook_aut("Stephen Hawkins");
+			b.setBook_intro("GRAND BOOK");
+			b.setBook_addr("ROOM 101");
+			b.setBook_ok("Beijing Forestry University publishing house");
 			b.setBook_health(2);
 			b.setBook_record("2018/12/21");
 			b.setBook_borrow_times(3);
 			b.setBook_price(23.5);
-			b.setBook_sort("科学");
+			b.setBook_sort("Science");
 			b.setBook_state(2 );
 			//bd.Insert(b);
 			bd.select();

@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 import com.entity.teacher;
 
 public class TeacherDao extends C3p0Connection{
-	//向老师表中插入新老师
+	//Insert the new teacher to the table
 	public void Insert (teacher t)
 	{
 		try {
@@ -22,13 +22,13 @@ public class TeacherDao extends C3p0Connection{
 			st = cn.createStatement();
 			String sql = "insert into teacher(tea_id,tea_name,tea_sex,tea_age,tea_dep,tea_username,tea_passwd,tea_email,tea_cardid,tea_code) values('"+t.getTea_id()+"','"+t.getTea_name()+"','"+t.getTea_sex()+"','"+t.getTea_age()+"','"+t.getTea_dep()+"','"+t.getTea_username()+"','"+t.getTea_passwd()+"','"+t.getTea_email()+"','"+t.getTea_cardid()+"','"+t.getTea_code()+"')";
 			st.executeUpdate(sql);
-			System.out.println("插入成功");
+			System.out.println("Insert successfully");
 		}catch(SQLException e)
 		{
 			e.printStackTrace();
 		}
 	}
-	//查询老师表中的老师
+	//select teacher from the table
 	public void select()
 	{
 		try {
@@ -41,12 +41,12 @@ public class TeacherDao extends C3p0Connection{
 			while(rs.next()) {
 				System.out.println(rs.getInt("tea_id")+" "+rs.getString("tea_name")+" "+rs.getString("tea_sex")+" "+rs.getInt("tea_age")+" "+rs.getString("tea_dep")+" "+rs.getString("tea_username")+" "+rs.getString("tea_email")+" "+rs.getString("tea_cardid")+" "+rs.getString("tea_code"));
 			}
-			System.out.println("查询成功");
+			System.out.println("select successfully");
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	//删除指定id的老师
+	//delete the teacher according the id
 	public void delete_id(teacher t)
 	{
 		try {
@@ -56,13 +56,13 @@ public class TeacherDao extends C3p0Connection{
 			st = cn.createStatement();
 			String sql = "delete from teacher where tea_id = '"+t.getTea_id()+"'";
 			st.executeUpdate(sql);
-			System.out.println("删除成功(id)");
+			System.out.println("delete successfully(id)");
 		}catch(SQLException e)
 		{
 			e.printStackTrace();
 		}
 	}
-	//删除指定username的老师
+	//delete the teacher according the username
 	public void delete_username(teacher t)
 	{
 		try {
@@ -72,13 +72,13 @@ public class TeacherDao extends C3p0Connection{
 			st = cn.createStatement();
 			String sql = "delete from teacher where tea_username = '"+t.getTea_username()+"'";
 			st.executeUpdate(sql);
-			System.out.println("删除成功(username)");
+			System.out.println("delete successfully(username)");
 		}catch(SQLException e)
 		{
 			e.printStackTrace();
 		}
 	}
-	//更改老师的表
+	//change the table 
 	public void change(teacher t)
 	{
 		try {
@@ -88,18 +88,18 @@ public class TeacherDao extends C3p0Connection{
 			st = cn.createStatement();
 			String sql = "update book set tea_name = '"+t.getTea_name()+"',tea_sex = '"+t.getTea_sex()+"',tea_age = '"+t.getTea_age()+"',tea_dep = '"+t.getTea_dep()+"',tea_username = '"+t.getTea_username()+"',tea_passwd = '"+t.getTea_passwd()+"',tea_email = '"+t.getTea_email()+"',tea_cardid = '"+t.getTea_cardid()+"',tea_code = '"+t.getTea_code()+"'";
 			st.executeUpdate(sql);
-			System.out.println("更改成功");
+			System.out.println("change successfully");
 		}catch(SQLException e)
 		{
 			e.printStackTrace();
 		}
 	}
-	//注册
+	//sign
 	public void sign()
 	{
 		try {
-			System.out.println("欢迎注册");
-			System.out.print("请输入用户名");
+			System.out.println("Welcom to sign");
+			System.out.println("Please input the username");
 			Scanner s_username = new Scanner(System.in);
 			teacher t =new teacher();
 			String teacher_username = s_username.nextLine();
@@ -111,101 +111,104 @@ public class TeacherDao extends C3p0Connection{
 			ResultSet rs = st.executeQuery(sql);
 			if(rs.next()==true)
 			{
-				System.out.println("用户名已存在，请登录或重新输入");
+				System.out.println("the username exist ,please input again or login directly");
 			}
 			else {
-				System.out.println("该用户名可用");
+				System.out.println("the username is available");
 				t.setTea_username(teacher_username);
 			}
 			while(true)
 			{
-				System.out.println("请输入密码");
+				System.out.println("Please input the password");
 				Scanner s_passwd = new Scanner(System.in);
 				String teacher_passwd = s_passwd.nextLine();
-				System.out.println("请再次输入密码");
+				System.out.println("Please input the password agin");
 				Scanner s_passwd2 = new Scanner(System.in);
 				String teacher_passwd2 = s_passwd2.nextLine();
 				if(teacher_passwd.equals(teacher_passwd2))
 				{
-					System.out.println("输入成功");
+					System.out.println("input successfully");
 					t.setTea_passwd(teacher_passwd);
 					break;
 				}
-				System.out.println("两次输入不成功，请再次输入");
+				System.out.println("input unconformably,please input again");
 			}
-			System.out.println("请输入您的性别");
+			System.out.println("Please input the sex ");
 			Scanner s_sex = new Scanner(System.in);
 			String teacher_sex = s_sex.nextLine();
 			t.setTea_sex(teacher_sex);
 			
-			System.out.println("请输入您的年龄");
+			System.out.println("Please input the age");
 			Scanner s_age = new Scanner(System.in);
 			int teacher_age = Integer.parseInt(s_age.nextLine());
 			t.setTea_age(teacher_age);
 			
-			System.out.println("请输入您的系别");
+			System.out.println("Please input the deperation");
 			Scanner s_dep = new Scanner(System.in);
 			String teacher_dep = s_dep.nextLine();
 			t.setTea_dep(teacher_dep);
-			
+			System.out.println("Please input the realname");
+			Scanner s_name = new Scanner(System.in);
+			String teacher_name = s_name.nextLine();
+			t.setTea_name(teacher_name);
 			while(true) {
-				System.out.println("请输入您的email");
+				System.out.println("Please input the email");
 				Scanner s_email = new Scanner(System.in);
 				String teacher_email = s_email.nextLine();
 				String sql1 = "select * from teacher where tea_email = '"+teacher_email+"'";
 				ResultSet rs1 =st.executeQuery(sql1);
 				if(!checkEmail(teacher_email))
 				{
-					System.out.println("该邮箱不符合正确形式");
+					System.out.println("The email is not available");
 					continue;
 				}
 				if(rs1.next()==true)
 				{
-					System.out.println("email已存在，请登录或重新输入");
+					System.out.println("email exists，please login or input again");
 				}
 				else {
-					System.out.println("该email可用");
+					System.out.println("The email is available");
 					t.setTea_email(teacher_email);
 					break;
 				}
 			}
 				
 			while(true){
-				System.out.println("请输入您的身份证号");
+				System.out.println("Please input the ID card");
 				Scanner s_cardid = new Scanner(System.in);
 				String teacher_cardid = s_cardid.nextLine();
 				String sql2 = "select * from teacher where tea_cardid= '"+teacher_cardid+"'";
 				ResultSet rs2 =st.executeQuery(sql2);
 				if(teacher_cardid.length()!=18){	
-					System.out.println("该身份证号不符，请重新输入");
+					System.out.println("The ID card is not available, please input again");
 					continue;
 				}
 				if(rs2.next()==true)
 				{
-					System.out.println("身份证号已存在，请登录或重新输入");
+					System.out.println("The ID card exists ,please login or input again");
 				}
 				else {
-					System.out.println("该身份证号可用");
+					System.out.println("The ID card is available");
 					t.setTea_cardid(teacher_cardid);
 					break;
 				}
 			}
 			
-			System.out.println("请输入您的条码号");
+			System.out.println("Please input the code");
 			Scanner s_code = new Scanner(System.in);
 			String teacher_code = s_code.nextLine();
 			String sql3 = "select * from teacher where tea_code= '"+teacher_code+"'";
 			ResultSet rs3 =st.executeQuery(sql3);
 			if(rs3.next()==true)
 			{
-				System.out.println("条形码已存在，请登录或重新输入");
+				System.out.println("The code exists ,please login or input again");
 			}
 			else {
-				System.out.println("该条码号可用");
+				System.out.println("The code is available");
 				t.setTea_code(teacher_code);
 			}
 			
-			System.out.println("注册成功");
+			System.out.println("sign successfully");
 			TeacherDao td = new TeacherDao();
 			td.Insert(t);
 			
@@ -214,15 +217,15 @@ public class TeacherDao extends C3p0Connection{
 			e.printStackTrace();
 		}
 	}
-	//登陆
+	//login
 	public void login()
 	{
 		try {
 			while(true)
 			{
 				int flag = 0;
-				System.out.println("请登录");
-				System.out.println("请输入用户名");
+				System.out.println("Please login");
+				System.out.println("Please input the username");
 				Scanner s_username = new Scanner(System.in);
 				String teacher_username = s_username.nextLine();	
 				String sql = "select * from teacher where tea_username = '"+teacher_username+"'";
@@ -231,43 +234,56 @@ public class TeacherDao extends C3p0Connection{
 				Statement st = null;
 				st = cn.createStatement();
 				ResultSet rs = st.executeQuery(sql);
-				if(rs.next()==true)
+				if(rs.next())
 				{
 					flag++;
 				}
-				System.out.println("请输入密码");
+				System.out.println("flag is "+flag);
+				
+				
+				System.out.println("Please input the password");
 				Scanner s_passwd = new Scanner(System.in);
 				String teacher_passwd = s_passwd.nextLine();
-				String sql1 = "select * from teacher where tea_username ='"+teacher_username+"',tea_passwd = '"+teacher_passwd+"'";
-				ResultSet rs1 = st.executeQuery(sql1);
-				if(rs.next() == true)
+				String sql1 = "select * from teacher where tea_username ='"+teacher_username+"' and tea_passwd = '"+teacher_passwd+"'";
+				Connection cn1 = null;
+				cn1 = getConnection();
+				Statement st1 = null;
+				st1 = cn.createStatement();
+				ResultSet rs1 = st1.executeQuery(sql1);
+				if(rs1.next())
 				{
 					flag++;
 				}
-				System.out.println("请选择验证方式");
-				System.out.println("身份证  邮箱  条形码三选一");
+				System.out.println("flag is "+flag);
+				System.out.println("Please choose the verification mode");
+				System.out.println("ID card  email  code (method of triads)");
 				Scanner s_check = new Scanner(System.in);
 				String check = s_check.nextLine();
 				int check_flag = 0;
-				if(check.equals("身份证"))
+				if(check.equals("ID card"))
 				{
 					check_flag = 1;
 				}
-				if(check.equals("邮箱"))
+				if(check.equals("email"))
 				{
 					check_flag = 2;
 				}
-				if(check.equals("条形码"))
+				if(check.equals("code"))
 				{
 					check_flag = 3;
 				}
 				switch (check_flag)
 				{
 				case 1:
+					System.out.print("Your ID card is");
 					Scanner s_cardid = new Scanner(System.in);
 					String teacher_cardid = s_cardid.nextLine();
-					String sql2 = "select * from teacher where tea_username ='"+teacher_username+"',tea_passwd = '"+teacher_passwd+"',tea_cardid= '"+teacher_cardid+"'";
-					ResultSet rs2 =st.executeQuery(sql2);
+					String sql2 = "select * from teacher where tea_username ='"+teacher_username+"' and tea_passwd = '"+teacher_passwd+"' and tea_cardid= '"+teacher_cardid+"'";
+					Connection cn2 = null;
+					cn2 = getConnection();
+					Statement st2 = null;
+					st2 = cn2.createStatement();
+					ResultSet rs2 =st2.executeQuery(sql2);
 					if(rs2.next())
 					{
 						flag++;
@@ -275,10 +291,15 @@ public class TeacherDao extends C3p0Connection{
 					break;
 				
 				case 2:
+					System.out.print("Your email is ");
 					Scanner s_email = new Scanner(System.in);
 					String teacher_email = s_email.nextLine();
-					String sql3 = "select * from teacher where tea_username ='"+teacher_username+"',tea_passwd = '"+teacher_passwd+"',tea_email= '"+teacher_email+"'";
-					ResultSet rs3 = st.executeQuery(sql3);
+					String sql3 = "select * from teacher where tea_username ='"+teacher_username+"' and tea_passwd = '"+teacher_passwd+"' and tea_email= '"+teacher_email+"'";
+					Connection cn3 = null;
+					cn3 = getConnection();
+					Statement st3 = null;
+					st3 = cn.createStatement();
+					ResultSet rs3 = st3.executeQuery(sql3);
 					if(rs3.next())
 					{
 						flag++;
@@ -286,10 +307,15 @@ public class TeacherDao extends C3p0Connection{
 					break;
 				
 				case 3:
+					System.out.print("Your code is ");
 					Scanner s_code = new Scanner(System.in);
 					String teacher_code = s_code.nextLine();
-					String sql4 =  "select * from teacher where tea_username ='"+teacher_username+"',tea_passwd = '"+teacher_passwd+"',tea_code= '"+teacher_code+"'";
-					ResultSet rs4 = st.executeQuery(sql4);
+					String sql4 =  "select * from teacher where tea_username ='"+teacher_username+"' and tea_passwd = '"+teacher_passwd+"' and tea_code= '"+teacher_code+"'";
+					Connection cn4 = null;
+					cn4 = getConnection();
+					Statement st4 = null;
+					st4 = cn.createStatement();
+					ResultSet rs4 = st4.executeQuery(sql4);
 					if(rs4.next())
 					{
 						flag++;
@@ -298,8 +324,10 @@ public class TeacherDao extends C3p0Connection{
 				default:
 					break;
 				}
-				System.out.println("请输入验证码");
+				System.out.println("flag is "+flag);
+				System.out.print("Please input the verification code ");
 				String s = getStringRandom(6);
+				System.out.println(s);
 				Scanner s_random = new Scanner(System.in);
 				String random = s_random.nextLine();
 				if(s.equals(random))
@@ -308,11 +336,12 @@ public class TeacherDao extends C3p0Connection{
 				}
 				if(flag == 4)
 				{
-					System.out.println("恭喜您，登录成功");
+					System.out.println("Congratulation, login successfully");
 					break;
 				}
 				else {
-					System.out.println("请重新输入");
+					System.out.println("flag is "+flag);
+					System.out.println("Unfortunately ,please login again");
 				}
 			}
 		}catch(SQLException e)
@@ -321,7 +350,7 @@ public class TeacherDao extends C3p0Connection{
 		}
 	}
 	
-	//验证邮箱
+	//check the email
 	public static boolean checkEmail(String email) {
 	    boolean flag = false;
 	    try {
@@ -335,16 +364,16 @@ public class TeacherDao extends C3p0Connection{
 	    return flag;
 	}
 	
-	//生成随机验证码
+	//get the random
 	public static String getStringRandom(int length) {
 		String val = "";
 		Random random = new Random();
-		//参数length，表示生成几位随机数
+		//length the sum of random number
 		for(int i = 0; i < length; i++) {
 			String charOrNum = random.nextInt(2) % 2 == 0 ? "char" : "num";
-			//输出字母还是数字
+			//number or word
 			if( "char".equalsIgnoreCase(charOrNum) ) {
-				//输出是大写字母还是小写字母
+				//Capital letter or small letter
 				int temp = random.nextInt(2) % 2 == 0 ? 65 : 97;
 				val += (char)(random.nextInt(26) + temp);
 			} else if( "num".equalsIgnoreCase(charOrNum) ) {
@@ -354,6 +383,7 @@ public class TeacherDao extends C3p0Connection{
 		return val;
 	}
 	public void test() {
-		
+		//sign();
+		login();
 	}
 }
