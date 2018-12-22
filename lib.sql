@@ -32,7 +32,7 @@ CREATE TABLE `app_student` (
   KEY `FK_app_book_id` (`book_id`),
   CONSTRAINT `FK_app_book_id` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
   CONSTRAINT `FK_app_stu_id` FOREIGN KEY (`stu_id`) REFERENCES `student` (`stu_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,7 +61,7 @@ CREATE TABLE `app_teacher` (
   KEY `FK_app_tbook_id` (`book_id`),
   CONSTRAINT `FK_app_tbook_id` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
   CONSTRAINT `FK_app_tea_id` FOREIGN KEY (`tea_id`) REFERENCES `teacher` (`tea_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,6 +70,7 @@ CREATE TABLE `app_teacher` (
 
 LOCK TABLES `app_teacher` WRITE;
 /*!40000 ALTER TABLE `app_teacher` DISABLE KEYS */;
+INSERT INTO `app_teacher` VALUES (3,1,1,'2018-12-22');
 /*!40000 ALTER TABLE `app_teacher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -94,7 +95,7 @@ CREATE TABLE `book` (
   `book_aut` varchar(20) NOT NULL,
   `book_state` int(11) NOT NULL,
   PRIMARY KEY (`book_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,6 +104,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
+INSERT INTO `book` VALUES (1,'时间简史','伟大的书籍','101室','北京林业大学出版社',2,'2018-12-21',3,23.5,'科学','史蒂芬霍金',2),(2,NULL,NULL,NULL,NULL,0,NULL,0,NULL,NULL,'',0),(3,NULL,NULL,NULL,NULL,0,NULL,0,NULL,NULL,'',0),(4,NULL,NULL,NULL,NULL,0,NULL,0,NULL,NULL,'',0),(5,'时间简史','伟大的书籍','101室','北京林业大学出版社',2,'2018-12-21',3,23.5,'科学','史蒂芬霍金',2),(6,'时间简史','伟大的书籍','101室','北京林业大学出版社',2,'2018-12-21',3,23.5,'科学','史蒂芬霍金',2),(7,'时间简史','伟大的书籍','101室','北京林业大学出版社',2,'2018-12-21',3,23.5,'科学','史蒂芬霍金',2);
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +120,6 @@ CREATE TABLE `borrow_student` (
   `stu_id` int(11) NOT NULL,
   `book_id` int(11) NOT NULL,
   `borrow_date` date NOT NULL,
-  `exp_return_date` date NOT NULL,
   PRIMARY KEY (`borrow_student_id`),
   KEY `FK_bor_stu_id` (`stu_id`),
   KEY `FK_bor_book_id` (`book_id`),
@@ -148,7 +149,6 @@ CREATE TABLE `borrow_teacher` (
   `tea_id` int(11) NOT NULL,
   `book_id` int(11) NOT NULL,
   `borrow_date` date NOT NULL,
-  `exp_return_date` date NOT NULL,
   PRIMARY KEY (`borrow_teacher_id`),
   KEY `FK_bor_tea_id` (`tea_id`),
   KEY `FK_bor_tbook_id` (`book_id`),
@@ -341,6 +341,8 @@ CREATE TABLE `student` (
   `stu_email` varchar(20) NOT NULL,
   `stu_cardid` varchar(20) NOT NULL,
   `stu_code` varchar(20) NOT NULL,
+  `stu_left_borrow` int(11) NOT NULL DEFAULT '20',
+  `stu_left_applicate` int(11) NOT NULL DEFAULT '5',
   PRIMARY KEY (`stu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -372,8 +374,10 @@ CREATE TABLE `teacher` (
   `tea_email` varchar(20) NOT NULL,
   `tea_cardid` varchar(20) NOT NULL,
   `tea_code` varchar(20) NOT NULL,
+  `tea_left_applicate` int(11) NOT NULL DEFAULT '30',
+  `tea_left_borrow` int(11) NOT NULL DEFAULT '10',
   PRIMARY KEY (`tea_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -382,6 +386,7 @@ CREATE TABLE `teacher` (
 
 LOCK TABLES `teacher` WRITE;
 /*!40000 ALTER TABLE `teacher` DISABLE KEYS */;
+INSERT INTO `teacher` VALUES (1,'null','男',18,'计算机','cmd','123456','123456@qq.com','230603199811120213','code456',0,0);
 /*!40000 ALTER TABLE `teacher` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -394,4 +399,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-20 19:44:54
+-- Dump completed on 2018-12-22 20:08:48
