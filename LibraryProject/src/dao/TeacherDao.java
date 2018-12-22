@@ -383,7 +383,7 @@ public class TeacherDao extends C3p0Connection{
 		return val;
 	}
 	public void test() {
-		//sign();
-		login();
+		sign();
+		//login();
 	}
 }
