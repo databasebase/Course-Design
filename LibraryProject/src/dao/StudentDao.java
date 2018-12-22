@@ -9,103 +9,80 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.entity.teacher;
+import com.entity.book;
+import com.entity.student;
 
-public class TeacherDao extends C3p0Connection{
-	//Insert the new teacher to the table
-	public void Insert (teacher t)
-	{
+public class StudentDao {
+	public static void View() {
 		try {
-			Connection cn = null;
-			Statement st = null;
-			cn = getConnection();
-			st = cn.createStatement();
-			String sql = "insert into teacher(tea_name,tea_sex,tea_age,tea_dep,tea_username,tea_passwd,tea_email,tea_cardid,tea_code,tea_left_borrow,tea_left_applicate) values('"+t.getTea_name()+"','"+t.getTea_sex()+"','"+t.getTea_age()+"','"+t.getTea_dep()+"','"+t.getTea_username()+"','"+t.getTea_passwd()+"','"+t.getTea_email()+"','"+t.getTea_cardid()+"','"+t.getTea_code()+"','"+t.getTea_left_borrow()+"','"+t.getTea_left_applicate()+"')";
-			st.executeUpdate(sql);
-			System.out.println("Insert successfully");
-		}catch(SQLException e)
-		{
-			e.printStackTrace();
-		}
-	}
-	//select teacher from the table
-	public void select()
-	{
-		try {
-			Connection cn = null;
-			cn = getConnection();
-			Statement st = null;
-			st = cn.createStatement();
-			String sql = "select * from teacher";
-			ResultSet rs = st.executeQuery(sql);
-			while(rs.next()) {
-				System.out.println(rs.getInt("tea_id")+" "+rs.getString("tea_name")+" "+rs.getString("tea_sex")+" "+rs.getInt("tea_age")+" "+rs.getString("tea_dep")+" "+rs.getString("tea_username")+" "+rs.getString("tea_email")+" "+rs.getString("tea_cardid")+" "+rs.getString("tea_code")+" "+rs.getInt("tea_left_borrow")+" "+rs.getInt("tea_left_applicate"));
+			Connection conn = C3p0Connection.getConnection();
+			Statement stmt = conn.createStatement();
+			String sql = "select * from student";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				System.out.println(rs.getString("stu_id") + " " + rs.getString("stu_name") + " "
+						+ rs.getString("stu_sex") + " " + rs.getString("stu_age") + " " + rs.getString("stu_pro") + " "
+						+ rs.getString("stu_grade") + " " + rs.getString("stu_username") + " "
+						+ rs.getString("stu_email") + " " + rs.getString("stu_cardid") + " "
+						+ rs.getString("stu_code"));
 			}
-			System.out.println("select successfully");
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	//delete the teacher according the id
-	public void delete_id(teacher t)
-	{
+
+	public static void Insert(student stu) {
 		try {
-			Connection cn = null;
-			cn = getConnection();
-			Statement st = null;
-			st = cn.createStatement();
-			String sql = "delete from teacher where tea_id = '"+t.getTea_id()+"'";
-			st.executeUpdate(sql);
-			System.out.println("delete successfully(id)");
-		}catch(SQLException e)
-		{
+			Connection conn = C3p0Connection.getConnection();
+			Statement stmt = conn.createStatement();
+			String sql = "insert into student values('" + stu.getStu_name() + "','" + stu.getStu_sex() + "','" + stu.getStu_age()
+					+ "','" + stu.getStu_pro()+ "','" + stu.getStu_grade() + "','" + stu.getStu_username() + "','" + stu.getStu_passwd() + "','"
+					+ stu.getStu_email() + "','" + stu.getStu_cardid() + "','" + stu.getStu_code() + "')";
+			stmt.executeUpdate(sql);
+			// System.out.println("SUCCESS");
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	//delete the teacher according the username
-	public void delete_username(teacher t)
-	{
+
+	public static void delete(int id) {
 		try {
-			Connection cn = null;
-			cn = getConnection();
-			Statement st = null;
-			st = cn.createStatement();
-			String sql = "delete from teacher where tea_username = '"+t.getTea_username()+"'";
-			st.executeUpdate(sql);
-			System.out.println("delete successfully(username)");
-		}catch(SQLException e)
-		{
+			Connection conn = C3p0Connection.getConnection();
+			Statement stmt = conn.createStatement();
+			String sql = "delete from student where stu_id='" + id + "';";
+			stmt.executeUpdate(sql);
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	//change the table 
-	public void change(teacher t)
-	{
+
+	public void Change(student stu) {
 		try {
-			Connection cn = null;
-			cn = getConnection();
-			Statement st = null;
-			st = cn.createStatement();
-			String sql = "update teacher set tea_name = '"+t.getTea_name()+"',tea_sex = '"+t.getTea_sex()+"',tea_age = '"+t.getTea_age()+"',tea_dep = '"+t.getTea_dep()+"',tea_username = '"+t.getTea_username()+"',tea_passwd = '"+t.getTea_passwd()+"',tea_email = '"+t.getTea_email()+"',tea_cardid = '"+t.getTea_cardid()+"',tea_code = '"+t.getTea_code()+"',tea_left_borrow='"+t.getTea_left_borrow()+"',tea_left_applicate='"+t.getTea_left_applicate()+"'";
-			st.executeUpdate(sql);
-			System.out.println("change successfully");
-		}catch(SQLException e)
-		{
+			Connection conn = C3p0Connection.getConnection();
+			Statement stmt = conn.createStatement();
+			stmt = conn.createStatement();
+			String sql = "update book set stu_id = '" + stu.getStu_id() + "',stu_name = '" + stu.getStu_name()
+					+ "',stu_sex = '" + stu.getStu_sex() + "',stu_age = '" + stu.getStu_age() + "',stu_pro = '"
+					+ stu.getStu_pro() + "',stu_grade= '" + stu.getStu_grade() + "',stu_username = '"
+					+ stu.getStu_username()+ "',stu_email = '" + stu.getStu_email() + "',stu_cardid ='"
+					+ stu.getStu_cardid() + "',stu_code = '" + stu.getStu_code() + "'";
+			stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	//sign
+
 	public void sign()
 	{
 		try {
 			System.out.println("Welcom to sign");
 			System.out.println("Please input the username");
 			Scanner s_username = new Scanner(System.in);
-			teacher t =new teacher();
-			String teacher_username = s_username.nextLine();
-			String sql = "select * from teacher where tea_id = '"+teacher_username+"'";
-			Connection cn = null;
-			cn = getConnection();
+			student stu =new student();
+			String student_username = s_username.nextLine();
+			String sql = "select * from student where stu_id = '"+student_username+"'";
+			Connection cn = C3p0Connection.getConnection();
 			Statement st = null;
 			st = cn.createStatement();
 			ResultSet rs = st.executeQuery(sql);
@@ -115,49 +92,55 @@ public class TeacherDao extends C3p0Connection{
 			}
 			else {
 				System.out.println("the username is available");
-				t.setTea_username(teacher_username);
+				stu.setStu_username(student_username);
 			}
 			while(true)
 			{
 				System.out.println("Please input the password");
 				Scanner s_passwd = new Scanner(System.in);
-				String teacher_passwd = s_passwd.nextLine();
+				String student_passwd = s_passwd.nextLine();
 				System.out.println("Please input the password agin");
 				Scanner s_passwd2 = new Scanner(System.in);
-				String teacher_passwd2 = s_passwd2.nextLine();
-				if(teacher_passwd.equals(teacher_passwd2))
+				String student_passwd2 = s_passwd2.nextLine();
+				if(student_passwd.equals(student_passwd2))
 				{
 					System.out.println("input successfully");
-					t.setTea_passwd(teacher_passwd);
+					stu.setStu_passwd(student_passwd);
 					break;
 				}
 				System.out.println("input unconformably,please input again");
 			}
 			System.out.println("Please input the sex ");
 			Scanner s_sex = new Scanner(System.in);
-			String teacher_sex = s_sex.nextLine();
-			t.setTea_sex(teacher_sex);
+			String student_sex = s_sex.nextLine();
+			stu.setStu_sex(student_sex);
 			
 			System.out.println("Please input the age");
 			Scanner s_age = new Scanner(System.in);
-			int teacher_age = Integer.parseInt(s_age.nextLine());
-			t.setTea_age(teacher_age);
+			int student_age = Integer.parseInt(s_age.nextLine());
+			stu.setStu_age(student_age);
 			
-			System.out.println("Please input the deperation");
-			Scanner s_dep = new Scanner(System.in);
-			String teacher_dep = s_dep.nextLine();
-			t.setTea_dep(teacher_dep);
-			System.out.println("Please input the realname");
+			System.out.println("Please input the pro");
+			Scanner s_pro = new Scanner(System.in);
+			String student_pro = s_pro.nextLine();
+			stu.setStu_pro(student_pro);
+			
+			System.out.println("Please input the grade");
+			Scanner s_grade = new Scanner(System.in);
+			String student_grade = s_grade.nextLine();
+			stu.setStu_grade(Integer.valueOf(student_grade));
+			
+			System.out.println("Please input the username");
 			Scanner s_name = new Scanner(System.in);
-			String teacher_name = s_name.nextLine();
-			t.setTea_name(teacher_name);
+			String student_name = s_name.nextLine();
+			stu.setStu_username(student_name);
 			while(true) {
 				System.out.println("Please input the email");
 				Scanner s_email = new Scanner(System.in);
-				String teacher_email = s_email.nextLine();
-				String sql1 = "select * from teacher where tea_email = '"+teacher_email+"'";
+				String student_email = s_email.nextLine();
+				String sql1 = "select * from student where stu_email = '"+student_email+"'";
 				ResultSet rs1 =st.executeQuery(sql1);
-				if(!checkEmail(teacher_email))
+				if(!checkEmail(student_email))
 				{
 					System.out.println("The email is not available");
 					continue;
@@ -168,7 +151,7 @@ public class TeacherDao extends C3p0Connection{
 				}
 				else {
 					System.out.println("The email is available");
-					t.setTea_email(teacher_email);
+					stu.setStu_email(student_email);;
 					break;
 				}
 			}
@@ -176,10 +159,10 @@ public class TeacherDao extends C3p0Connection{
 			while(true){
 				System.out.println("Please input the ID card");
 				Scanner s_cardid = new Scanner(System.in);
-				String teacher_cardid = s_cardid.nextLine();
-				String sql2 = "select * from teacher where tea_cardid= '"+teacher_cardid+"'";
+				String student_cardid = s_cardid.nextLine();
+				String sql2 = "select * from student where stu_cardid= '"+student_cardid+"'";
 				ResultSet rs2 =st.executeQuery(sql2);
-				if(teacher_cardid.length()!=18){	
+				if(student_cardid.length()!=18){	
 					System.out.println("The ID card is not available, please input again");
 					continue;
 				}
@@ -189,15 +172,15 @@ public class TeacherDao extends C3p0Connection{
 				}
 				else {
 					System.out.println("The ID card is available");
-					t.setTea_cardid(teacher_cardid);
+					stu.setStu_cardid(student_cardid);
 					break;
 				}
 			}
 			
 			System.out.println("Please input the code");
 			Scanner s_code = new Scanner(System.in);
-			String teacher_code = s_code.nextLine();
-			String sql3 = "select * from teacher where tea_code= '"+teacher_code+"'";
+			String student_code = s_code.nextLine();
+			String sql3 = "select * from student where stu_code= '"+student_code+"'";
 			ResultSet rs3 =st.executeQuery(sql3);
 			if(rs3.next()==true)
 			{
@@ -205,12 +188,12 @@ public class TeacherDao extends C3p0Connection{
 			}
 			else {
 				System.out.println("The code is available");
-				t.setTea_code(teacher_code);
+				stu.setStu_code(student_code);
 			}
 			
 			System.out.println("sign successfully");
-			TeacherDao td = new TeacherDao();
-			td.Insert(t);
+			StudentDao sd = new StudentDao();
+			sd.Insert(stu);
 			
 		}catch(SQLException e)
 		{
@@ -227,10 +210,9 @@ public class TeacherDao extends C3p0Connection{
 				System.out.println("Please login");
 				System.out.println("Please input the username");
 				Scanner s_username = new Scanner(System.in);
-				String teacher_username = s_username.nextLine();	
-				String sql = "select * from teacher where tea_username = '"+teacher_username+"'";
-				Connection cn = null;
-				cn = getConnection();
+				String student_username = s_username.nextLine();	
+				String sql = "select * from student where stu_username = '"+student_username+"'";
+				Connection cn = C3p0Connection.getConnection();
 				Statement st = null;
 				st = cn.createStatement();
 				ResultSet rs = st.executeQuery(sql);
@@ -243,10 +225,9 @@ public class TeacherDao extends C3p0Connection{
 				
 				System.out.println("Please input the password");
 				Scanner s_passwd = new Scanner(System.in);
-				String teacher_passwd = s_passwd.nextLine();
-				String sql1 = "select * from teacher where tea_username ='"+teacher_username+"' and tea_passwd = '"+teacher_passwd+"'";
-				Connection cn1 = null;
-				cn1 = getConnection();
+				String student_passwd = s_passwd.nextLine();
+				String sql1 = "select * from student where stu_username ='"+student_username+"' and stu_passwd = '"+student_passwd+"'";
+				Connection cn1 = C3p0Connection.getConnection();
 				Statement st1 = null;
 				st1 = cn.createStatement();
 				ResultSet rs1 = st1.executeQuery(sql1);
@@ -277,10 +258,9 @@ public class TeacherDao extends C3p0Connection{
 				case 1:
 					System.out.print("Your ID card is");
 					Scanner s_cardid = new Scanner(System.in);
-					String teacher_cardid = s_cardid.nextLine();
-					String sql2 = "select * from teacher where tea_username ='"+teacher_username+"' and tea_passwd = '"+teacher_passwd+"' and tea_cardid= '"+teacher_cardid+"'";
-					Connection cn2 = null;
-					cn2 = getConnection();
+					String student_cardid = s_cardid.nextLine();
+					String sql2 = "select * from student where stu_username ='"+student_username+"' and stu_passwd = '"+student_passwd+"' and stu_cardid= '"+student_cardid+"'";
+					Connection cn2 = C3p0Connection.getConnection();
 					Statement st2 = null;
 					st2 = cn2.createStatement();
 					ResultSet rs2 =st2.executeQuery(sql2);
@@ -293,10 +273,9 @@ public class TeacherDao extends C3p0Connection{
 				case 2:
 					System.out.print("Your email is ");
 					Scanner s_email = new Scanner(System.in);
-					String teacher_email = s_email.nextLine();
-					String sql3 = "select * from teacher where tea_username ='"+teacher_username+"' and tea_passwd = '"+teacher_passwd+"' and tea_email= '"+teacher_email+"'";
-					Connection cn3 = null;
-					cn3 = getConnection();
+					String student_email = s_email.nextLine();
+					String sql3 = "select * from student where stu_username ='"+student_username+"' and stu_passwd = '"+student_passwd+"' and stu_email= '"+student_email+"'";
+					Connection cn3 = C3p0Connection.getConnection();
 					Statement st3 = null;
 					st3 = cn.createStatement();
 					ResultSet rs3 = st3.executeQuery(sql3);
@@ -309,10 +288,9 @@ public class TeacherDao extends C3p0Connection{
 				case 3:
 					System.out.print("Your code is ");
 					Scanner s_code = new Scanner(System.in);
-					String teacher_code = s_code.nextLine();
-					String sql4 =  "select * from teacher where tea_username ='"+teacher_username+"' and tea_passwd = '"+teacher_passwd+"' and tea_code= '"+teacher_code+"'";
-					Connection cn4 = null;
-					cn4 = getConnection();
+					String student_code = s_code.nextLine();
+					String sql4 =  "select * from student where stu_username ='"+student_username+"' and stu_passwd = '"+student_passwd+"' and stu_code= '"+student_code+"'";
+					Connection cn4 = C3p0Connection.getConnection();
 					Statement st4 = null;
 					st4 = cn.createStatement();
 					ResultSet rs4 = st4.executeQuery(sql4);
@@ -382,8 +360,5 @@ public class TeacherDao extends C3p0Connection{
 		}
 		return val;
 	}
-	public void test() {
-		//sign();
-		login();
-	}
+
 }
