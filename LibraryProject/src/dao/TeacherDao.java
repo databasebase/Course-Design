@@ -20,7 +20,7 @@ public class TeacherDao extends C3p0Connection{
 			Statement st = null;
 			cn = getConnection();
 			st = cn.createStatement();
-			String sql = "insert into teacher(tea_id,tea_name,tea_sex,tea_age,tea_dep,tea_username,tea_passwd,tea_email,tea_cardid,tea_code) values('"+t.getTea_id()+"','"+t.getTea_name()+"','"+t.getTea_sex()+"','"+t.getTea_age()+"','"+t.getTea_dep()+"','"+t.getTea_username()+"','"+t.getTea_passwd()+"','"+t.getTea_email()+"','"+t.getTea_cardid()+"','"+t.getTea_code()+"')";
+			String sql = "insert into teacher(tea_name,tea_sex,tea_age,tea_dep,tea_username,tea_passwd,tea_email,tea_cardid,tea_code) values('"+t.getTea_name()+"','"+t.getTea_sex()+"','"+t.getTea_age()+"','"+t.getTea_dep()+"','"+t.getTea_username()+"','"+t.getTea_passwd()+"','"+t.getTea_email()+"','"+t.getTea_cardid()+"','"+t.getTea_code()+"')";
 			st.executeUpdate(sql);
 			System.out.println("Insert successfully");
 		}catch(SQLException e)
@@ -86,7 +86,7 @@ public class TeacherDao extends C3p0Connection{
 			cn = getConnection();
 			Statement st = null;
 			st = cn.createStatement();
-			String sql = "update book set tea_name = '"+t.getTea_name()+"',tea_sex = '"+t.getTea_sex()+"',tea_age = '"+t.getTea_age()+"',tea_dep = '"+t.getTea_dep()+"',tea_username = '"+t.getTea_username()+"',tea_passwd = '"+t.getTea_passwd()+"',tea_email = '"+t.getTea_email()+"',tea_cardid = '"+t.getTea_cardid()+"',tea_code = '"+t.getTea_code()+"'";
+			String sql = "update teacher set tea_name = '"+t.getTea_name()+"',tea_sex = '"+t.getTea_sex()+"',tea_age = '"+t.getTea_age()+"',tea_dep = '"+t.getTea_dep()+"',tea_username = '"+t.getTea_username()+"',tea_passwd = '"+t.getTea_passwd()+"',tea_email = '"+t.getTea_email()+"',tea_cardid = '"+t.getTea_cardid()+"',tea_code = '"+t.getTea_code()+"'";
 			st.executeUpdate(sql);
 			System.out.println("change successfully");
 		}catch(SQLException e)
