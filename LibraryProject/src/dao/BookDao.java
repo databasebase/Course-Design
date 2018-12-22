@@ -19,7 +19,7 @@ public class BookDao  extends C3p0Connection{
 				st = cn.createStatement();
 				String sql = "insert into book(book_id,book_name,book_aut,book_intro,book_addr,book_ok,book_health,book_record,book_borrow_times,book_price,book_sort,book_state) values('"+b.getBook_id()+"','"+b.getBook_name()+"','"+b.getBook_aut()+"','"+b.getBook_intro()+"','"+b.getBook_addr()+"','"+b.getBook_ok()+"','"+b.getBook_health()+"','"+b.getBook_record()+"','"+b.getBook_borrow_times()+"','"+b.getBook_price()+"','"+b.getBook_sort()+"','"+b.getBook_state()+"')";
 				st.executeUpdate(sql);
-				System.out.println("SUCCESS");
+				//System.out.println("SUCCESS");
 			}catch(SQLException e)
 			{
 				e.printStackTrace();
