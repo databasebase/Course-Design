@@ -12,6 +12,8 @@ public class student {
 	private String stu_email;
 	private String stu_cardid;
 	private String stu_code;
+	private int stu_left_borrow;
+	private int stu_left_applicate;
 	public int getStu_id() {
 		return stu_id;
 	}
@@ -20,6 +22,18 @@ public class student {
 	}
 	public String getStu_name() {
 		return stu_name;
+	}
+	public int getStu_left_borrow() {
+		return stu_left_borrow;
+	}
+	public void setStu_left_borrow(int stu_left_borrow) {
+		this.stu_left_borrow = stu_left_borrow;
+	}
+	public int getStu_left_applicate() {
+		return stu_left_applicate;
+	}
+	public void setStu_left_applicate(int stu_left_applicate) {
+		this.stu_left_applicate = stu_left_applicate;
 	}
 	public void setStu_name(String stu_name) {
 		this.stu_name = stu_name;

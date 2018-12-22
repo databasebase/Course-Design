@@ -29,11 +29,4 @@ public class BorrowTeacher {
 	public void setBorrow_date(String borrow_date) {
 		this.borrow_date = borrow_date;
 	}
-	public String getExp_return_date() {
-		return exp_return_date;
-	}
-	public void setExp_return_date(String exp_return_date) {
-		this.exp_return_date = exp_return_date;
-	}
-	private String exp_return_date;
 }

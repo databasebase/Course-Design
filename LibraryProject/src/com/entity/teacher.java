@@ -11,6 +11,20 @@ public class teacher {
 	private String tea_email;
 	private String tea_cardid;
 	private String tea_code;
+	private int tea_left_borrow;
+	private int tea_left_applicate;
+	public int getTea_left_borrow() {
+		return tea_left_borrow;
+	}
+	public void setTea_left_borrow(int tea_left_borrow) {
+		this.tea_left_borrow = tea_left_borrow;
+	}
+	public int getTea_left_applicate() {
+		return tea_left_applicate;
+	}
+	public void setTea_left_applicate(int tea_left_applicate) {
+		this.tea_left_applicate = tea_left_applicate;
+	}
 	public int getTea_id() {
 		return tea_id;
 	}
