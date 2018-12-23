@@ -280,8 +280,9 @@ public class ManagerDao {
 		}
 	}
 	//login
-	public void login_man()
+	public String login_man()
 	{
+		String manager_username = null;
 		try {
 			while(true)
 			{
@@ -289,7 +290,7 @@ public class ManagerDao {
 				System.out.println("Please login");
 				System.out.println("Please input the username");
 				Scanner m_username = new Scanner(System.in);
-				String manager_username = m_username.nextLine();	
+				manager_username = m_username.nextLine();	
 				String sql = "select * from manager where manager_username = '"+manager_username+"'";
 				Connection conn = C3p0Connection.getConnection();
 				Statement stmt = conn.createStatement();
@@ -298,9 +299,6 @@ public class ManagerDao {
 				{
 					flag++;
 				}
-				System.out.println("flag is "+flag);
-				
-				
 				System.out.println("Please input the password");
 				Scanner m_passwd = new Scanner(System.in);
 				String manager_passwd = m_passwd.nextLine();
@@ -312,7 +310,6 @@ public class ManagerDao {
 				{
 					flag++;
 				}
-				System.out.println("flag is "+flag);
 				System.out.println("Please choose the verification mode");
 				System.out.println("ID card  email  code (method of triads)");
 				Scanner s_check = new Scanner(System.in);
@@ -376,7 +373,6 @@ public class ManagerDao {
 				default:
 					break;
 				}
-				System.out.println("flag is "+flag);
 				System.out.print("Please input the verification code ");
 				String s = getStringRandom(6);
 				System.out.println(s);
@@ -392,14 +388,17 @@ public class ManagerDao {
 					break;
 				}
 				else {
-					System.out.println("flag is "+flag);
 					System.out.println("Unfortunately ,please login again");
 				}
+				return manager_username;
 			}
 		}catch(SQLException e)
 		{
 			e.printStackTrace();
 		}
+//		System.out.println(manager_username);
+		return manager_username;
+
 	}
 	
 	//check the email

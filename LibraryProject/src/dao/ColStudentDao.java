@@ -61,15 +61,15 @@ public class ColStudentDao extends C3p0Connection{
 		}
 	}
 	
-	//change the collection table
-	public void change(ColStudent ct)
+	//change the student_id from collection table
+	public void changestu_id(int student_id,int col_student_id)
 	{
 		try {
 			Connection cn = null;
 			cn = getConnection();
 			Statement st = null;
 			st = cn.createStatement();
-			String sql = "update col_student set stu_id = '"+ct.getStu_id()+"',book_id = '"+ct.getBook_id()+"',col_date = '"+ct.getCol_date()+"'"+",col_instr='"+ct.getCol_instr()+"'";
+			String sql = "update col_student set stu_id = '"+student_id+"' where col_student_id = '"+col_student_id+"'";
 			st.executeUpdate(sql);
 		}catch(SQLException e)
 		{
@@ -77,6 +77,55 @@ public class ColStudentDao extends C3p0Connection{
 		}
 	}
 	
+	//change the book_id from collection table
+		public void changebook_id(int book_id,int col_student_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update col_student set book_id = '"+book_id+"' where col_student_id = '"+col_student_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
+		//change the col_date from collection table
+		public void changecol_date(String col_date,int col_student_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update col_student set col_date = '"+col_date+"' where col_student_id = '"+col_student_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		//change the col_instr from collection table
+				public void changecol_instr(String col_instr,int col_student_id)
+				{
+					try {
+						Connection cn = null;
+						cn = getConnection();
+						Statement st = null;
+						st = cn.createStatement();
+						String sql = "update col_student set col_instr= '"+col_instr+"' where col_student_id = '"+col_student_id+"'";
+						st.executeUpdate(sql);
+					}catch(SQLException e)
+					{
+						e.printStackTrace();
+					}
+				}
+				
+
+
 	//test
 	public void test() {
 		ColStudentDao ctd = new ColStudentDao();

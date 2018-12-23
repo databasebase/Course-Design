@@ -61,22 +61,54 @@ public class AppTeacherDao extends C3p0Connection{
 		}
 	}
 	
-	//change the application table
-	public void change(AppTeacher at)
-	{
-		try {
-			Connection cn = null;
-			cn = getConnection();
-			Statement st = null;
-			st = cn.createStatement();
-			String sql = "update app_teacher set tea_id = '"+at.getTea_id()+"',book_id = '"+at.getBook_id()+"',app_date = '"+at.getApp_date()+"'";
-			st.executeUpdate(sql);
-		}catch(SQLException e)
+	//change the teacher_id from application table
+		public void changetea_id(int teacher_id,int app_teacher_id)
 		{
-			e.printStackTrace();
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update app_teacher set tea_id = '"+teacher_id+"' where app_teacher_id = '"+app_teacher_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
-	}
-	
+		
+		//change the book_id from application table
+			public void changebook_id(int book_id,int app_teacher_id)
+			{
+				try {
+					Connection cn = null;
+					cn = getConnection();
+					Statement st = null;
+					st = cn.createStatement();
+					String sql = "update app_teacher set book_id = '"+book_id+"' where app_teacher_id = '"+app_teacher_id+"'";
+					st.executeUpdate(sql);
+				}catch(SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			
+			//change the app_date from application table
+			public void changeapp_date(String app_date,int app_teacher_id)
+			{
+				try {
+					Connection cn = null;
+					cn = getConnection();
+					Statement st = null;
+					st = cn.createStatement();
+					String sql = "update app_teacher set app_date = '"+app_date+"' where app_teacher_id = '"+app_teacher_id+"'";
+					st.executeUpdate(sql);
+				}catch(SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			
 	//test
 	public void test() {
 		AppTeacherDao atd = new AppTeacherDao();

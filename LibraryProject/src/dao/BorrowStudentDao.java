@@ -62,41 +62,53 @@ public class BorrowStudentDao extends C3p0Connection{
 		}
 	}
 	
-	//change the borrow table
-	public void change(BorrowStudent bt)
-	{
-		try {
-			Connection cn = null;
-			cn = getConnection();
-			Statement st = null;
-			st = cn.createStatement();
-			String sql = "update borrow_student set borrow_student_id = '"+bt.getBorrow_student_id()+"',tea_id = '"+bt.getStu_id()+"',book_id = '"+bt.getBook_id()+"',borrow_date='"+bt.getBorrow_date()+"'";
-			st.executeUpdate(sql);
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	//test
-	public void test() {
-		BorrowTeacherDao btd = new BorrowTeacherDao();
-		BorrowTeacher bt = new BorrowTeacher();
-		bt.setBook_id(1);
-		bt.setTea_id(1);
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		Date date =new Date();
-		bt.setBorrow_date(df.format(date));
-		btd.Insert(bt);
-		btd.select();
-		System.out.println("1");
-		BorrowTeacher bt1 = new BorrowTeacher();
-		bt1.setBorrow_teacher_id(1);
-		bt1.setBook_id(1);
-		bt1.setTea_id(2);
-		bt1.setBorrow_date(df.format(date));
-		btd.change(bt1);
-		btd.select();
-		System.out.println("2");
-		btd.delete(bt1);
-		btd.select();
-	}
+	//change the student_id from borrow table
+			public void changestu_id(int student_id,int borrow_student_id)
+			{
+				try {
+					Connection cn = null;
+					cn = getConnection();
+					Statement st = null;
+					st = cn.createStatement();
+					String sql = "update borrow_student set stu_id = '"+student_id+"' where borrow_student_id = '"+borrow_student_id+"'";
+					st.executeUpdate(sql);
+				}catch(SQLException e)
+				{
+					e.printStackTrace();
+				}
+			}
+			
+			//change the book_id from borrow table
+				public void changebook_id(int book_id,int borrow_student_id)
+				{
+					try {
+						Connection cn = null;
+						cn = getConnection();
+						Statement st = null;
+						st = cn.createStatement();
+						String sql = "update borrow_student set book_id = '"+book_id+"' where borrow_student_id = '"+borrow_student_id+"'";
+						st.executeUpdate(sql);
+					}catch(SQLException e)
+					{
+						e.printStackTrace();
+					}
+				}
+				
+				//change the borrow_date from borrow table
+				public void changeborrow_date(String borrow_date,int borrow_student_id)
+				{
+					try {
+						Connection cn = null;
+						cn = getConnection();
+						Statement st = null;
+						st = cn.createStatement();
+						String sql = "update borrow_student set borrow_date = '"+borrow_date+"' where borrow_student_id = '"+borrow_student_id+"'";
+						st.executeUpdate(sql);
+					}catch(SQLException e)
+					{
+						e.printStackTrace();
+					}
+				}
+				
+
 }

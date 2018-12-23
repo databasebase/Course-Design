@@ -4,7 +4,7 @@
         <property name = "driverClass">com.mysql.cj.jdbc.Driver</property>
         <property name = "jdbcUrl">jdbc:mysql://localhost:3306/lib</property>
         <property name = "user">root</property>
-        <property name ="password">@Master3653</property>
+        <property name ="password">jiushi666</property>
 
     </default-config>
 </c3p0-config>

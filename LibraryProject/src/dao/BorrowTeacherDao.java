@@ -60,21 +60,54 @@ public class BorrowTeacherDao extends C3p0Connection{
 			e.printStackTrace();
 		}
 	}
-	
-	//change the borrow table
-	public void change(BorrowTeacher bt)
+	//change the teacher_id from borrow table
+	public void changetea_id(int teacher_id,int borrow_teacher_id)
 	{
 		try {
 			Connection cn = null;
 			cn = getConnection();
 			Statement st = null;
 			st = cn.createStatement();
-			String sql = "update borrow_teacher set borrow_teacher_id = '"+bt.getBorrow_teacher_id()+"',tea_id = '"+bt.getTea_id()+"',book_id = '"+bt.getBook_id()+"',borrow_date='"+bt.getBorrow_date()+"'";
+			String sql = "update borrow_teacher set tea_id = '"+teacher_id+"' where borrow_teacher_id = '"+borrow_teacher_id+"'";
 			st.executeUpdate(sql);
-		}catch(SQLException e) {
+		}catch(SQLException e)
+		{
 			e.printStackTrace();
 		}
 	}
+	
+	//change the book_id from borrow table
+		public void changebook_id(int book_id,int borrow_teacher_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update borrow_teacher set book_id = '"+book_id+"' where borrow_teacher_id = '"+borrow_teacher_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
+		//change the borrow_date from borrow table
+		public void changeborrow_date(String borrow_date,int borrow_teacher_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update borrow_teacher set borrow_date = '"+borrow_date+"' where borrow_teacher_id = '"+borrow_teacher_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
 	//test
 	public void test() {
 		BorrowTeacherDao btd = new BorrowTeacherDao();

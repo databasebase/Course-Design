@@ -1,5 +1,5 @@
 package mainTest;
-
+import Test.Test;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,8 +32,10 @@ public class Main {
 			//td.test();
 			//AppTeacherDao atd = new AppTeacherDao();
 			//atd.test();
-			BorrowStudentDao btd = new BorrowStudentDao();
-			btd.test();
+//			BorrowStudentDao btd = new BorrowStudentDao();
+//			btd.test();
+			Test t = new Test();
+			t.mainTest();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
