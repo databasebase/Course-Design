@@ -78,22 +78,181 @@ public class TeacherDao extends C3p0Connection{
 			e.printStackTrace();
 		}
 	}
-	//change the table 
-	public void change(teacher t)
-	{
-		try {
-			Connection cn = null;
-			cn = getConnection();
-			Statement st = null;
-			st = cn.createStatement();
-			String sql = "update teacher set tea_name = '"+t.getTea_name()+"',tea_sex = '"+t.getTea_sex()+"',tea_age = '"+t.getTea_age()+"',tea_dep = '"+t.getTea_dep()+"',tea_username = '"+t.getTea_username()+"',tea_passwd = '"+t.getTea_passwd()+"',tea_email = '"+t.getTea_email()+"',tea_cardid = '"+t.getTea_cardid()+"',tea_code = '"+t.getTea_code()+"',tea_left_borrow='"+t.getTea_left_borrow()+"',tea_left_applicate='"+t.getTea_left_applicate()+"'";
-			st.executeUpdate(sql);
-			System.out.println("change successfully");
-		}catch(SQLException e)
+	//change the teacher name from teacher table
+		public void changetea_name(String teacher_name,int tea_id)
 		{
-			e.printStackTrace();
+			try {
+				Connection cn = null;
+				cn = C3p0Connection.getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update teacher set tea_name = '"+teacher_name+"' where tea_id = '"+tea_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
-	}
+
+		//change the teacher sex from teacher table
+		public void changetea_sex(String teacher_sex,int tea_id)
+		{
+			try {
+				Connection cn = null;
+				cn = C3p0Connection.getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update teacher set tea_sex = '"+teacher_sex+"' where tea_id = '"+tea_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+
+		//change the teacher age from teacher table
+		public void changetea_age(int teacher_age,int tea_id)
+		{
+			try {
+				Connection cn = null;
+				cn = C3p0Connection.getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update teacher set tea_age = '"+teacher_age+"' where tea_id = '"+tea_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+
+		//change the teacher dep from teacher table
+		public void changetea_dep(String teacher_dep,int tea_id)
+		{
+			try {
+				Connection cn = null;
+				cn = C3p0Connection.getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update teacher set tea_pro = '"+teacher_dep+"' where tea_id = '"+tea_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+
+		//change the teacher username from teacher table
+		public void changetea_username(String teacher_username,int tea_id)
+		{
+			try {
+				Connection cn = null;
+				cn = C3p0Connection.getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update teacher set tea_username = '"+teacher_username+"' where tea_id = '"+tea_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+
+		//change the teacher passwd from teachertable
+		public void changetea_passwd(String teacher_passwd,int tea_id)
+		{
+			try {
+				Connection cn = null;
+				cn = C3p0Connection.getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update teacher set tea_passwd = '"+teacher_passwd+"' where tea_id = '"+tea_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+
+		//change the teacher email from teacher table
+		public void changetea_email(String teacher_email,int tea_id)
+		{
+			try {
+				Connection cn = null;
+				cn = C3p0Connection.getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update teacher set tea_email = '"+teacher_email+"' where tea_id = '"+tea_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+
+		//change the teacher cardid from teacher table
+		public void changetea_cardid(String teacher_cardid,int tea_id)
+		{
+			try {
+				Connection cn = null;
+				cn = C3p0Connection.getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update teacher set tea_cardid = '"+teacher_cardid+"' where tea_id = '"+tea_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+
+		//change the teacher code from teacher table
+		public void changetea_code(String teacher_code,int tea_id)
+		{
+			try {
+				Connection cn = null;
+				cn = C3p0Connection.getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update teacher set tea_code = '"+teacher_code+"' where tea_id = '"+tea_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+
+		//change the teacher left borrow from teacher table
+		public void changetea_left_borrow(int teacher_left_borrow,int tea_id)
+		{
+			try {
+				Connection cn = null;
+				cn = C3p0Connection.getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update teacher set tea_left_borrow = '"+teacher_left_borrow+"' where tea_id = '"+tea_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		//change the teacher left applicate from teacher table
+		public void changetea_left_applicate(int teacher_left_applicate,int tea_id)
+		{
+			try {
+				Connection cn = null;
+				cn = C3p0Connection.getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update teacher set tea_left_applicate = '"+teacher_left_applicate+"' where tea_id = '"+tea_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
 	//sign
 	public void sign()
 	{

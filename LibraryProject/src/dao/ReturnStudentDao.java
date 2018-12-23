@@ -62,19 +62,84 @@ public class ReturnStudentDao extends C3p0Connection{
 			e.printStackTrace();
 		}
 	}
-	public void change(ReturnStudent r)
+	//change the student_id from return table
+	public void changestu_id(int student_id,int return_student_id)
 	{
 		try {
 			Connection cn = null;
 			cn = getConnection();
 			Statement st = null;
 			st = cn.createStatement();
-			String sql = "update return_student set stu_id = '"+r.getStu_id()+"',book_id = '"+r.getBook_id()+"',return_date = '"+r.getReturn_date()+"',manager_id = '"+r.getManager_id()+"',book_health = '"+r.getBook_health()+"'";
+			String sql = "update return_student set stu_id = '"+student_id+"' where return_student_id = '"+return_student_id+"'";
 			st.executeUpdate(sql);
-			System.out.println("change successfully");
 		}catch(SQLException e)
 		{
 			e.printStackTrace();
 		}
 	}
+	
+	//change the book_id from return table
+		public void changebook_id(int book_id,int return_student_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update return_student set book_id = '"+book_id+"' where return_student_id = '"+return_student_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
+		//change the return_date from return table
+		public void changereturn_date(String return_date,int return_student_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update return_student set return_date = '"+return_date+"' where return_student_id = '"+return_student_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+
+		//change the manager_id from return table
+		public void changemanager_id(int manager_id,int return_student_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update return_student set manager_id = '"+manager_id+"' where return_student_id = '"+return_student_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		//change the book_id from return table
+		public void changebook_health(int book_health,int return_student_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update return_student set book_health = '"+book_health+"' where return_student_id = '"+return_student_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
+
 }

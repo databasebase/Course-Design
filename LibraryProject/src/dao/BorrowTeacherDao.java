@@ -108,27 +108,5 @@ public class BorrowTeacherDao extends C3p0Connection{
 			}
 		}
 		
-	//test
-	public void test() {
-		BorrowTeacherDao btd = new BorrowTeacherDao();
-		BorrowTeacher bt = new BorrowTeacher();
-		bt.setBook_id(1);
-		bt.setTea_id(1);
-		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		Date date =new Date();
-		bt.setBorrow_date(df.format(date));
-		btd.Insert(bt);
-		btd.select();
-		System.out.println("1");
-		BorrowTeacher bt1 = new BorrowTeacher();
-		bt1.setBorrow_teacher_id(1);
-		bt1.setBook_id(1);
-		bt1.setTea_id(2);
-		bt1.setBorrow_date(df.format(date));
-		btd.change(bt1);
-		btd.select();
-		System.out.println("2");
-		btd.delete(bt1);
-		btd.select();
-	}
+
 }

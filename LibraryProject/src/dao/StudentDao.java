@@ -56,23 +56,196 @@ public class StudentDao {
 		}
 	}
 
-	public void Change(student stu) {
+	//change the student name from student table
+	public void changestu_name(String student_name,int stu_id)
+	{
 		try {
-			Connection conn = C3p0Connection.getConnection();
-			Statement stmt = conn.createStatement();
-			stmt = conn.createStatement();
-			String sql = "update book set stu_id = '" + stu.getStu_id() + "',stu_name = '" + stu.getStu_name()
-					+ "',stu_sex = '" + stu.getStu_sex() + "',stu_age = '" + stu.getStu_age() + "',stu_pro = '"
-					+ stu.getStu_pro() + "',stu_grade= '" + stu.getStu_grade() + "',stu_username = '"
-					+ stu.getStu_username()+ "',stu_email = '" + stu.getStu_email() + "',stu_cardid ='"
-					+ stu.getStu_cardid() + "',stu_code = '" + stu.getStu_code() + "'";
-			stmt.executeUpdate(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			Connection cn = null;
+			cn = C3p0Connection.getConnection();
+			Statement st = null;
+			st = cn.createStatement();
+			String sql = "update student set stu_name = '"+student_name+"' where stu_id = '"+stu_id+"'";
+			st.executeUpdate(sql);
+		}catch(SQLException e)
+		{
 			e.printStackTrace();
 		}
 	}
 
+	//change the student sex from student table
+	public void changestu_sex(String student_sex,int stu_id)
+	{
+		try {
+			Connection cn = null;
+			cn = C3p0Connection.getConnection();
+			Statement st = null;
+			st = cn.createStatement();
+			String sql = "update student set stu_sex = '"+student_sex+"' where stu_id = '"+stu_id+"'";
+			st.executeUpdate(sql);
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	//change the student age from student table
+	public void changestu_age(int student_age,int stu_id)
+	{
+		try {
+			Connection cn = null;
+			cn = C3p0Connection.getConnection();
+			Statement st = null;
+			st = cn.createStatement();
+			String sql = "update student set stu_age = '"+student_age+"' where stu_id = '"+stu_id+"'";
+			st.executeUpdate(sql);
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	//change the student pro from student table
+	public void changestu_pro(String student_pro,int stu_id)
+	{
+		try {
+			Connection cn = null;
+			cn = C3p0Connection.getConnection();
+			Statement st = null;
+			st = cn.createStatement();
+			String sql = "update student set stu_pro = '"+student_pro+"' where stu_id = '"+stu_id+"'";
+			st.executeUpdate(sql);
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	//change the student grade from student table
+	public void changestu_grade(int student_grade,int stu_id)
+	{
+		try {
+			Connection cn = null;
+			cn = C3p0Connection.getConnection();
+			Statement st = null;
+			st = cn.createStatement();
+			String sql = "update student set stu_grade = '"+student_grade+"' where stu_id = '"+stu_id+"'";
+			st.executeUpdate(sql);
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	//change the student username from student table
+	public void changestu_username(String student_username,int stu_id)
+	{
+		try {
+			Connection cn = null;
+			cn = C3p0Connection.getConnection();
+			Statement st = null;
+			st = cn.createStatement();
+			String sql = "update student set stu_username = '"+student_username+"' where stu_id = '"+stu_id+"'";
+			st.executeUpdate(sql);
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	//change the student passwd from student table
+	public void changestu_passwd(String student_passwd,int stu_id)
+	{
+		try {
+			Connection cn = null;
+			cn = C3p0Connection.getConnection();
+			Statement st = null;
+			st = cn.createStatement();
+			String sql = "update student set stu_passwd = '"+student_passwd+"' where stu_id = '"+stu_id+"'";
+			st.executeUpdate(sql);
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	//change the student email from student table
+	public void changestu_email(String student_email,int stu_id)
+	{
+		try {
+			Connection cn = null;
+			cn = C3p0Connection.getConnection();
+			Statement st = null;
+			st = cn.createStatement();
+			String sql = "update student set stu_email = '"+student_email+"' where stu_id = '"+stu_id+"'";
+			st.executeUpdate(sql);
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	//change the student cardid from student table
+	public void changestu_cardid(String student_cardid,int stu_id)
+	{
+		try {
+			Connection cn = null;
+			cn = C3p0Connection.getConnection();
+			Statement st = null;
+			st = cn.createStatement();
+			String sql = "update student set stu_cardid = '"+student_cardid+"' where stu_id = '"+stu_id+"'";
+			st.executeUpdate(sql);
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	//change the student code from student table
+	public void changestu_code(String student_code,int stu_id)
+	{
+		try {
+			Connection cn = null;
+			cn = C3p0Connection.getConnection();
+			Statement st = null;
+			st = cn.createStatement();
+			String sql = "update student set stu_code = '"+student_code+"' where stu_id = '"+stu_id+"'";
+			st.executeUpdate(sql);
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	//change the student left borrow from student table
+	public void changestu_left_borrow(int student_left_borrow,int stu_id)
+	{
+		try {
+			Connection cn = null;
+			cn = C3p0Connection.getConnection();
+			Statement st = null;
+			st = cn.createStatement();
+			String sql = "update student set stu_left_borrow = '"+student_left_borrow+"' where stu_id = '"+stu_id+"'";
+			st.executeUpdate(sql);
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	//change the student left applicate from student table
+	public void changestu_left_applicate(int student_left_applicate,int stu_id)
+	{
+		try {
+			Connection cn = null;
+			cn = C3p0Connection.getConnection();
+			Statement st = null;
+			st = cn.createStatement();
+			String sql = "update student set stu_left_applicate = '"+student_left_applicate+"' where stu_id = '"+stu_id+"'";
+			st.executeUpdate(sql);
+		}catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
 	public void sign()
 	{
 		try {

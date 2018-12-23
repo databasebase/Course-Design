@@ -60,46 +60,170 @@ public class BookDao  extends C3p0Connection{
 				e.printStackTrace();
 			}
 		}
-		//change the book according the id
-		public void change(book b)
+		//change the book_name from book table
+		public void changebook_name(String book_name,int book_id)
 		{
-			
 			try {
-				Connection cn =null;
+				Connection cn = null;
 				cn = getConnection();
 				Statement st = null;
 				st = cn.createStatement();
-				String sql = "update book set book_name = '"+b.getBook_name()+"',book_aut = '"+b.getBook_aut()+"',book_intro = '"+b.getBook_intro()+"',book_addr = '"+b.getBook_addr()+"',book_ok = '"+b.getBook_ok()+"',book_health = '"+b.getBook_health()+"',book_record = '"+b.getBook_record()+"',book_borrow_times = '"+b.getBook_borrow_times()+"',book_price ='"+b.getBook_price()+"',book_sort = '"+b.getBook_sort()+"',book_state = '"+b.getBook_state()+"' where book_id = '"+b.getBook_id()+"'";
+				String sql = "update book set book_name = '"+book_name+"' where book_id = '"+book_id+"'";
 				st.executeUpdate(sql);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+			}catch(SQLException e)
+			{
 				e.printStackTrace();
 			}
 		}
-		public void test()
+		//change the book_intro from book table
+		public void changebook_intro(String book_intro,int book_id)
 		{
-			BookDao bd = new BookDao();
-			book b = new book();
-			b.setBook_id(1);
-			b.setBook_name("A Brief History of Time ");
-			b.setBook_aut("Stephen Hawkins");
-			b.setBook_intro("GRAND BOOK");
-			b.setBook_addr("ROOM 101");
-			b.setBook_ok("Beijing Forestry University publishing house");
-			b.setBook_health(2);
-			b.setBook_record("2018-12-21");
-			b.setBook_borrow_times(3);
-			b.setBook_price(23.5);
-			b.setBook_sort("Science");
-			b.setBook_state(2 );
-			//bd.Insert(b);
-			bd.select();
-			book b1 = new book();
-			b1.setBook_id(8);
-			System.out.println(b1.getBook_id());
-			bd.delete(b1);
-			bd.select();
-			bd.change(b);
-			bd.select();
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update book set book_intro = '"+book_intro+"' where book_id = '"+book_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
+		//change the book_addr from book table
+		public void changebook_addr(String book_addr,int book_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update book set book_addr = '"+book_addr+"' where book_id = '"+book_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		//change the book_ok from book table
+		public void changebook_ok(String book_ok,int book_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update book set book_ok = '"+book_ok+"' where book_id = '"+book_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}	
+		//change the book_health from book table
+		public void changebook_health(int book_health,int book_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update book set book_health = '"+book_health+"' where book_id = '"+book_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		//change the book_borrow_times from book table
+		public void changebook_borrow_times(int book_borrow_times,int book_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update book set book_borrow_times = '"+book_borrow_times+"' where book_id = '"+book_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		//change the book_record from book table
+		public void changebook_record(String book_record,int book_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update book set book_record = '"+book_record+"' where book_id = '"+book_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		//change the book_price from book table
+		public void changebook_price(double book_price,int book_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update book set book_price = '"+book_price+"' where book_id = '"+book_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		//change the book_sort from book table
+		public void changebook_sort(String book_sort,int book_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update book set book_sort = '"+book_sort+"' where book_id = '"+book_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		//change the book_aut from book table
+		public void changebook_aut(String book_aut,int book_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update book set book_aut = '"+book_aut+"' where book_id = '"+book_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		//change the book_state from book table
+		public void changebook_state(int book_state,int book_id)
+		{
+			try {
+				Connection cn = null;
+				cn = getConnection();
+				Statement st = null;
+				st = cn.createStatement();
+				String sql = "update book set book_state = '"+book_state+"' where book_id = '"+book_id+"'";
+				st.executeUpdate(sql);
+			}catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+		}
+
 }
