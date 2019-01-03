@@ -11,7 +11,7 @@
  Target Server Version : 80013
  File Encoding         : 65001
 
- Date: 23/12/2018 22:22:31
+ Date: 03/01/2019 20:42:48
 */
 
 SET NAMES utf8mb4;
@@ -26,7 +26,7 @@ CREATE TABLE `actor`  (
   `actor_name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `actor_intro` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`actor_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of actor
@@ -44,14 +44,14 @@ CREATE TABLE `label`  (
   `label_name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `label_num` int(11) NOT NULL,
   PRIMARY KEY (`label_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of label
 -- ----------------------------
 INSERT INTO `label` VALUES (1, '喜剧', 1);
 INSERT INTO `label` VALUES (2, '动画', 1);
-INSERT INTO `label` VALUES (3, '超级英雄', 3);
+INSERT INTO `label` VALUES (3, '超级英雄', 1);
 
 -- ----------------------------
 -- Table structure for manager
@@ -67,7 +67,7 @@ CREATE TABLE `manager`  (
   `manager_cardid` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `manager_code` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`manager_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of manager
@@ -106,7 +106,8 @@ CREATE TABLE `movie_label`  (
   `label_id` int(11) NOT NULL,
   PRIMARY KEY (`mov_id`, `label_id`) USING BTREE,
   INDEX `label_id_idx`(`label_id`) USING BTREE,
-  CONSTRAINT `label_id` FOREIGN KEY (`label_id`) REFERENCES `label` (`label_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  CONSTRAINT `label_id` FOREIGN KEY (`label_id`) REFERENCES `label` (`label_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `moviefk` FOREIGN KEY (`mov_id`) REFERENCES `movies` (`mov_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -124,7 +125,10 @@ CREATE TABLE `movie_star`  (
   `movie_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `star` int(11) NOT NULL,
-  PRIMARY KEY (`movie_id`, `user_id`) USING BTREE
+  PRIMARY KEY (`movie_id`, `user_id`) USING BTREE,
+  INDEX `fk2`(`user_id`) USING BTREE,
+  CONSTRAINT `fk1` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`mov_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -132,6 +136,7 @@ CREATE TABLE `movie_star`  (
 -- ----------------------------
 INSERT INTO `movie_star` VALUES (1, 1, 4);
 INSERT INTO `movie_star` VALUES (2, 1, 5);
+INSERT INTO `movie_star` VALUES (3, 1, 3);
 
 -- ----------------------------
 -- Table structure for movies
@@ -146,7 +151,7 @@ CREATE TABLE `movies`  (
   `mov_la` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `mov_rel` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`mov_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of movies
@@ -164,16 +169,19 @@ CREATE TABLE `movies_review`  (
   `user_id` int(11) NOT NULL,
   `mov_time` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `mov_lik` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `mov_review` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`mov_id`, `user_id`) USING BTREE,
-  INDEX `user_id_idx`(`user_id`) USING BTREE
+  INDEX `user_id_idx`(`user_id`) USING BTREE,
+  CONSTRAINT `ji` FOREIGN KEY (`mov_id`) REFERENCES `movies` (`mov_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `ko` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of movies_review
 -- ----------------------------
-INSERT INTO `movies_review` VALUES (1, 1, '2018-12-23', '20');
-INSERT INTO `movies_review` VALUES (2, 1, '2018-12-23', '21');
-INSERT INTO `movies_review` VALUES (3, 1, '2018-12-23', '41');
+INSERT INTO `movies_review` VALUES (1, 1, '2018-12-23', '20', '');
+INSERT INTO `movies_review` VALUES (2, 1, '2018-12-23', '21', '');
+INSERT INTO `movies_review` VALUES (3, 1, '2018-12-23', '41', '');
 
 -- ----------------------------
 -- Table structure for users
@@ -189,7 +197,7 @@ CREATE TABLE `users`  (
   `user_cardid` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `user_code` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
