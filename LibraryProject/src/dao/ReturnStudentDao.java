@@ -22,7 +22,7 @@ public class ReturnStudentDao extends C3p0Connection{
 			Statement st = null;
 			cn = getConnection();
 			st = cn.createStatement();
-			String sql = "insert into return_student(stu_id,book_id,return_date,manager_id,book_health) values('"+r.getStu_id()+"','"+r.getBook_id()+"','"+r.getReturn_date()+"','"+r.getManager_id()+"','"+r.getBook_health()+"'";
+			String sql = "insert into return_student(stu_id,book_id,return_date,manager_id,book_health) values('"+r.getStu_id()+"','"+r.getBook_id()+"','"+r.getReturn_date()+"','"+r.getManager_id()+"','"+r.getBook_health()+"')";
 			st.executeUpdate(sql);
 			System.out.println("Insert successfully");
 		}catch(SQLException e)

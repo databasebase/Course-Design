@@ -322,7 +322,7 @@ public class ManageTest {
 						String st[] = str8.split(" ");
 						bsd.changebook_id(Integer.parseInt(st[0]), Integer.parseInt(st[1]));
 					
-					}else if(str7.equals("app_date"))
+					}else if(str7.equals("borrow_date"))
 					{
 
 						System.out.println("Please input the borrow_date and borrow_student_id you want to change");
@@ -830,8 +830,8 @@ public class ManageTest {
 				System.out.println("Please choose the number.");
 				System.out.println("1.Insert a return record to the Student Return table.");
 				System.out.println("2.View the Student Return table");
-				System.out.println("3.Delete a return record from the Student Teacher table");
-				System.out.println("4.Change a return record from the Student Teacher table");
+				System.out.println("3.Delete a return record from the Student Return table");
+				System.out.println("4.Change a return record from the Student Return table");
 				System.out.println("5.Leave this part");
 				Scanner s2 = new Scanner(System.in);
 				String str2 = s2.nextLine();
@@ -866,7 +866,7 @@ public class ManageTest {
 					Scanner ss1 = new Scanner(System.in);
 					String book_health = ss1.nextLine();
 					rs.setBook_health(Integer.parseInt(book_health));
-					
+					rsd.Insert(rs);
 					System.out.println("Insert Successfully ");
 					break;
 				case 2:
