@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="F:/GitHub/Course-Design/LibraryProject/lib/c3p0-0.9.5.1.jar"/>
+	<classpathentry kind="lib" path="F:/GitHub/Course-Design/LibraryProject/lib/commons-dbcp2-2.1.1.jar"/>
+	<classpathentry kind="lib" path="F:/GitHub/Course-Design/LibraryProject/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="F:/GitHub/Course-Design/LibraryProject/lib/commons-pool2-2.4.2.jar"/>
+	<classpathentry kind="lib" path="F:/GitHub/Course-Design/LibraryProject/lib/mchange-commons-java-0.2.10.jar"/>
+	<classpathentry kind="lib" path="F:/GitHub/Course-Design/LibraryProject/lib/mysql-connector-java-8.0.13.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
